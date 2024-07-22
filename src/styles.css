@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+.box-panel {
+    position: relative;
+    margin-bottom: 15px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.75);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.75);
+
+}
+
+.text-right {
+    text-align: right;
+}
+
+.wrapper {
+    padding: 20px 25px;
+    -webkit-transition: margin 0.2s ease-in-out;
+    -o-transition: margin 0.2s ease-in-out;
+    transition: margin 0.2s ease-in-out;
+
+}
+.p-1 {
+    padding: 10px !important;
+}
+
+.m-5 {
+    margin: 5px !important;
+}
+
+.m-10 {
+    margin: 10px !important;
+}
+
+.m-auto {
+    margin: auto !important;
+}
+
+.w-75 {
+    width: 75% !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+.flex-item {
+    flex: 0 0 50%; /* Each item will take up 50% of the container width */
+    box-sizing: border-box;
+    padding: 10px;
+/* border: 1px solid #ccc; Optional styling for items */
+}
+
+.mt-10 {
+    margin-top: 10px !important;
+}
+
+.form-controls.required .form-label:after {
+    content:"*";
+    color:red;
+  }
+
