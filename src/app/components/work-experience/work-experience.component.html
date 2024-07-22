@@ -1,0 +1,75 @@
+<div class= "m-10" *ngFor="let expForm of workExperienceForm.controls; let i = index">
+    <h3> Experience {{i+1}} : </h3>
+    <div [formGroup]="getFormGroup(i)">
+        <div class="form-controls col-sm-6 m-10 required">
+            <label class = 'form-label col-sm-3' for='company_{{i}}'>Company</label>
+            <input class = 'col-sm-4 form-control' type="text"
+                 id="company_{{i}}"
+                 formControlName="company" />
+            <div class = 'col-sm text-danger' for="error"
+                 id="error"
+                 *ngIf="getFormGroup(i).controls['company'].invalid && getFormGroup(i).controls['company'].touched"
+            >
+                Enter a Valid company name
+            </div>
+        </div>
+        <div class="form-controls col-sm-6 m-10 required">
+            <label class = 'form-label col-sm-3' for='designation_{{i}}'>Designation</label>
+            <input class = 'col-sm-4 form-control' type="text"
+                 id="designation_{{i}}"
+                 formControlName="designation" />
+        </div>
+        <div class="form-controls col-sm-6 m-10 ">
+            <label class = 'form-label col-sm-3' for='location_{{i}}'>Location</label>
+            <input class = 'col-sm-4 form-control' type="text"
+                 id="location_{{i}}"
+                 formControlName="location" />
+        </div>
+        
+        <div class="form-check col-sm-6 m-10">
+            <input class = 'col-sm form-check-input' type="checkbox"
+                 id="currentEmployer_{{i}}"
+                 formControlName="currentEmployer" 
+                 (change)="currentEmployer($event,i)"/>
+            <label class = 'form-check-label col-sm' value = '' for='currentEmployer_{{i}}'>Current Employer</label>
+        </div>
+        <div class="row">
+            <div class="form-controls col-sm-3 m-10 required">
+                <label class = 'form-label col-sm-5' for='fromDate_{{i}}'>From Date</label>
+                <input class = 'col-sm-4 form-control' type="number"
+                     id="fromDate_{{i}}"
+                     formControlName="fromDate"/>
+                <div class = 'col-sm text-danger' for="error"
+                    id="error"
+                    *ngIf="getFormGroup(i).controls['fromDate'].invalid && getFormGroup(i).controls['fromDate'].touched"
+                >
+                    Enter a valid year
+                </div>
+            </div>
+            <div class="form-controls col-sm-3 m-10 ">
+                <label class = 'form-label col-sm-5' for='toDate_{{i}}'>To Date </label>
+                <input [disabled] = "getFormGroup(i).get('currentEmployer') ? true : false" class = 'col-sm-4 form-control' type="number"
+                     id="toDate_{{i}}"
+                     formControlName="toDate" />
+                <div class = 'col-sm text-danger' for="error"
+                    id="error"
+                    *ngIf="getFormGroup(i).controls['toDate'].invalid && getFormGroup(i).controls['toDate'].touched"
+                >
+                    Enter a valid year
+                </div>
+                <div class = 'col-sm text-danger' for="error"
+                    id="error"
+                    *ngIf="getFormGroup(i).get('toDate')?.errors?.['endYearError'] && getFormGroup(i).controls['toDate'].touched"
+                >
+                    From Date cannot be greater than To Date
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <hr>
+  </div>
+
+  <div>
+    <button type="button" (click) = "addExperience()" class="btn btn-link">Add Experience</button>
+  </div>

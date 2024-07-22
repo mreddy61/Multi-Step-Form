@@ -1,0 +1,49 @@
+<div class= "m-10" *ngFor="let edForm of educationForm.controls; let i = index">
+    <h3> Education {{i+1}} : </h3>
+    <div [formGroup]="getFormGroup(i)">
+        <div class="form-controls col-sm-6 m-10 required">
+            <label class = 'form-label col-sm-6' for='university_{{i}}'>University</label>
+            <input class = 'col-sm-4 form-control' type="text"
+                 id="university_{{i}}"
+                 formControlName="university" />
+            <div class = 'col-sm text-danger' for="error"
+                 id="error"
+                 *ngIf="getFormGroup(i).controls['university'].invalid && getFormGroup(i).controls['university'].touched"
+            >
+                Enter a Valid University name
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-controls col-sm-3 m-10 required">
+                <label class = 'form-label col-sm-5' for='startYear_{{i}}'>Start Year</label>
+                <input class = 'col-sm-4 form-control' type="text"
+                     id="startYear_{{i}}"
+                     formControlName="startYear" />
+            </div>
+            <div class="form-controls col-sm-3 m-10 required">
+                <label class = 'form-label col-sm-5' for='endYear_{{i}}'>End Year</label>
+                <input class = 'col-sm-4 form-control' type="text"
+                     id="endYear_{{i}}"
+                     formControlName="endYear" />
+                <div class = 'col-sm text-danger' for="error"
+                     id="error"
+                     *ngIf="getFormGroup(i).get('endYear')?.errors?.['endYearError'] && getFormGroup(i).controls['endYear'].touched"
+                 >
+                     Start Year cannot be greater than End Year
+                 </div>
+            </div>
+        </div>
+        
+        <div class="form-controls col-sm-6 m-10 ">
+            <label class = 'form-label col-sm-3' for='cgpa_{{i}}'>CGPA</label>
+            <input class = 'col-sm-4 form-control' type="text"
+                 id="cgpa_{{i}}"
+                 formControlName="cgpa" />
+        </div>
+    </div>
+    <hr>
+</div>
+
+  <div>
+    <button type="button" (click) = "addEducation()" class="btn btn-link">Add Education</button>
+  </div>

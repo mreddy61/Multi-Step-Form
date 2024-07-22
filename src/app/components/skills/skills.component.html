@@ -1,0 +1,28 @@
+<div class= "m-10" *ngFor="let skillForm of skillsForm.controls; let i = index">
+    <h3> Skill {{i+1}} : </h3>
+    <div [formGroup]="getFormGroup(i)">
+        <div class="form-controls col-sm-6 m-10 required">
+            <label class = 'form-label col-sm-6' for='skillName_{{i}}'>Skill Name</label>
+            <input class = 'col-sm-4 form-control' type="text"
+                 id="skillName_{{i}}"
+                 formControlName="skillName" />
+            <div class = 'col-sm text-danger' for="error"
+                 id="error"
+                 *ngIf="getFormGroup(i).controls['skillName'].invalid && getFormGroup(i).controls['skillName'].touched"
+            >
+                Enter a valid skill name
+            </div>
+        </div>
+        <div class="form-controls col-sm-6 m-10 required">
+            <label class = 'form-label col-sm-5' for='experience_{{i}}'>Experience in Yrs</label>
+            <input class = 'col-sm-4 form-control' type="number"
+                 id="experience_{{i}}"
+                 formControlName="experience" />
+        </div>
+    </div>
+    <hr>
+</div>
+
+  <div>
+    <button type="button" (click) = "addSkill()" class="btn btn-link">Add Skill</button>
+  </div>

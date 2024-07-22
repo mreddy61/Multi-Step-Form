@@ -1,0 +1,44 @@
+<form [formGroup] = "personalInfoForm">
+    <div class = "row .m-auto w-75">
+        <div class="form-controls col-sm-6 m-10 required">
+            <label class = 'form-label col-sm-3' for="name">Name</label>
+            <input class = 'col-sm-4 form-control' type="text"
+                 id="name"
+                 formControlName="name" />
+        </div>
+        <div class="form-controls col-sm-6 m-10 required">
+            <label class = 'form-label col-sm-3' for="name">Email</label>
+            <input class = 'col-sm-4 form-control' type="email"
+                 id="email"
+                 formControlName="email" />
+
+            <div class = 'col-sm text-danger' for="error"
+                 id="error"
+                 *ngIf="this.personalInfoForm.controls['email'].invalid && this.personalInfoForm.controls['email'].touched"
+            >
+                Enter a Valid Email address
+            </div>
+        </div>
+        <div class="form-controls col-sm-6 m-10 required">
+            <label class = 'form-label col-sm-3' for="phone">Phone</label>  
+            <input class = 'col-sm-4 form-control' type="number"
+                 matInput
+                 id="phone"
+                 formControlName="phone"/>
+            <div class = 'col-sm text-danger' for="error"
+                 id="error"
+                 *ngIf="this.personalInfoForm.controls['phone'].invalid && this.personalInfoForm.controls['phone'].touched"
+            >
+                Enter a Valid Phone number
+            </div>
+        </div>
+        <div class="form-controls col-sm-6 m-10">
+            <label class = 'form-label col-sm-3' for="languagesKnown">Languages</label>  
+            <input class = 'col-sm-4 form-control' type="text"
+                 matInput
+                 id="languagesKnown"
+                 formControlName="languagesKnown"/>
+        </div>
+    </div>
+
+</form>

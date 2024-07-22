@@ -1,0 +1,32 @@
+<div class = 'wrapper'>
+    <div class="box-panel p-1">
+      <h1 class = "text-center">Employee Information</h1>
+      <!-- <p>
+        <button type="button" [disabled] = "currentTab == 0" class="btn btn-primary btn-sm m-5" (click)="selectTab('previous')"> Previous</button>
+        <button type="button" [disabled] = "currentTab == 3" class="btn btn-primary btn-sm" (click)="selectTab('next  ')"> Next </button>
+      </p> -->
+      <hr/>
+      <tabset #staticTabs>
+        <tab heading="Personal Information" (selectTab) = "selectedTab($event)">
+          <app-personal-details *ngIf="personalInfoForm" [personalInfoForm]="personalInfoForm"></app-personal-details>
+        </tab>
+        <tab heading="Work Experience" (selectTab) = "selectedTab($event)">
+          <app-work-experience *ngIf="workExperienceForm" [workExperienceForm]="workExperienceForm"></app-work-experience>
+        </tab>
+        <tab heading="Education" (selectTab) = "selectedTab($event)">
+          <app-education *ngIf="educationForm" [educationForm]="educationForm"></app-education></tab>
+        <tab heading="Skills" (selectTab) = "selectedTab($event)">
+          <app-skills *ngIf="skillsForm" [skillsForm]="skillsForm"></app-skills>
+        </tab>
+        <tab heading = "Review" (selectTab) = "selectedTab($event)">
+          <div *ngIf = "currentTab==5">
+            <app-final-review></app-final-review>
+          </div>
+        </tab>
+      </tabset>
+      <div *ngIf = "currentTab<5" class=" m-10 d-flex justify-content-between">
+        <button [disabled] = "currentTab==1" type="button" (click) = "previousTab()" [class]= "currentTab==1 ? 'btn btn-primary disabled' :'btn btn-primary'">Previous</button>
+        <button type="button" (click) = "nextTab()" class="btn btn-primary">Next</button>
+      </div>
+    </div>
+  </div>

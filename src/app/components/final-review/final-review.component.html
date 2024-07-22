@@ -1,0 +1,112 @@
+<div class = "container mt-10">
+    <h4> Personal Information</h4>
+    <div class = "row m">
+        <div class="col-sm-3">
+            Name:
+        </div>
+        <div class="col-sm-3">
+            {{finalData.PersonalInformation.name}}
+        </div>
+        <div class="col-sm-3">
+            Email:
+        </div>
+        <div class="col-sm-3">
+            {{finalData.PersonalInformation.email}}
+        </div>
+        <div class="col-sm-3">
+            Phone:
+        </div>
+        <div class="col-sm-3">
+            {{finalData.PersonalInformation.phone}}
+        </div>
+        <div class="col-sm-3">
+            Languages:
+        </div>
+        <div class="col-sm-3">
+            {{finalData.PersonalInformation.languagesKnown}}
+        </div>
+    </div>
+    <hr>
+    <h4> Work Experience</h4>
+    <div class="flex-container">
+        <div *ngFor = "let exp of finalData.WorkExperience let i = index" class = "row flex-item">   
+            <div class="col-sm-6 text-right">
+                Company:
+            </div>
+            <div class="col-sm-6 text-left">
+                {{exp.company}}
+            </div>
+            <div class="col-sm-6 text-right">
+                Tenure:
+            </div>
+            <div class="col-sm-6 text-left">
+                {{exp.fromDate ? exp.fromDate + ' - ' : ''}}  {{exp.currentEmployer ? 'Present' : exp.toDate}}
+            </div>
+            <div class="col-sm-6 text-right">
+                Designation:
+            </div>
+            <div class="col-sm-6 text-left">
+                {{exp.designation}}
+            </div>
+            <div class="col-sm-6 text-right">
+                Location:
+            </div>
+            <div class="col-sm-6 text-left">
+                {{exp.location}}
+            </div>
+        
+        </div>
+    </div>
+    <hr>
+    <h4> Education</h4>
+    <div class="flex-container">
+        <div *ngFor = "let ed of finalData.Education let i = index" class = "row flex-item">   
+            <div class="col-sm-6 text-right">
+                University:
+            </div>
+            <div class="col-sm-6 text-left">
+                {{ed.university}}
+            </div>
+            <div class="col-sm-6 text-right">
+                Period:
+            </div>
+            <div class="col-sm-6 text-left">
+                {{ed.startYear ? ed.startYear + ' - ' : ''}}  {{ed.endYear}}
+            </div>
+            <div class="col-sm-6 text-right">
+                CGPA:
+            </div>
+            <div class="col-sm-6 text-left">
+                {{ed.cgpa}}
+            </div>
+        
+        </div>
+    </div>
+    <hr>
+    <h4> Skills</h4>
+    <div class="flex-container">
+        <div *ngFor = "let skill of finalData.Skills let i = index" class = "row flex-item"> 
+            <div class="row">
+                <div class="col-sm-3 text-right">
+                    Skill:
+                </div>
+                <div class="col-sm-3 text-left">
+                    {{skill.skillName}}
+                </div>
+                <div class="col-sm-3 text-right">
+                    Exp:
+                </div>
+                <div class="col-sm-3 text-left">
+                    {{skill.experience}}
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <button type="button" (click) = "submit()" class="btn btn-primary">Submit</button>
+    </div>
+    <div *ngIf = "showError" class = 'col-sm text-danger'>
+        Please fill in all the required fields and fix validation errors and re-submit.
+    </div>
+</div>
+
